@@ -1,5 +1,7 @@
 package homework3;
 
+import java.util.Scanner;
+
 import shared.DataSet;
 import shared.Instance;
 import shared.filt.IndependentComponentAnalysis;
@@ -23,17 +25,13 @@ public class IonosphereICA {
     	int numInstances = 351;
     	int numAttributes = 34;
     	String fileLocation = "src/Homework3/ionosphere.txt";
-        DataSet set = new DataSet(new CreateDataSet(numInstances, numAttributes, fileLocation).getIntanceArray());
-        System.out.println("Before randomizing");
-        System.out.println(set);
-        Matrix projection = new RectangularMatrix(new double[][]{ {.6, .6}, {.4, .6}});
-        for (int i = 0; i < set.size(); i++) {
-            Instance instance = set.get(i);
-            instance.setData(projection.times(instance.getData()));
-        }
+    	Scanner scan = new Scanner(System.in);
+    	System.out.println("Enter the number of reduced dimentions: ");
+    	int numReducedDimentions = scan.nextInt();
+    	DataSet set = new DataSet(new CreateDataSet(numInstances, numAttributes, fileLocation).getIntanceArray());
         System.out.println("Before ICA");
         System.out.println(set);
-        IndependentComponentAnalysis filter = new IndependentComponentAnalysis(set, 1);
+        IndependentComponentAnalysis filter = new IndependentComponentAnalysis(set, numReducedDimentions);
         filter.filter(set);
         System.out.println("After ICA");
         System.out.println(set);

@@ -1,5 +1,7 @@
 package homework3;
 
+import java.util.Scanner;
+
 import shared.DataSet;
 import shared.Instance;
 import shared.filt.PrincipalComponentAnalysis;
@@ -21,6 +23,9 @@ public class IonospherePCA {
     	int numInstances = 351;
     	int numAttributes = 34;
     	String fileLocation = "src/Homework3/ionosphere.txt";
+    	Scanner scan = new Scanner(System.in);
+    	System.out.println("Enter the number of reduced dimentions: ");
+    	int numReducedDimentions = scan.nextInt();
         DataSet set = new DataSet(new CreateDataSet(numInstances, numAttributes, fileLocation).getIntanceArray());
         System.out.println("Before PCA");
         System.out.println(set);

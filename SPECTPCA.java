@@ -1,5 +1,7 @@
 package homework3;
 
+import java.util.Scanner;
+
 import shared.DataSet;
 import shared.Instance;
 import shared.filt.PrincipalComponentAnalysis;
@@ -11,7 +13,7 @@ import util.linalg.Matrix;
  * @author Pujun Bhatnagar
  * @version 1.0
  */
-public class SPECTPCA {
+public class SpectPCA {
     
     /**
      * The test main
@@ -21,6 +23,9 @@ public class SPECTPCA {
     	int numInstances = 267;
     	int numAttributes = 23;
     	String fileLocation = "src/Homework3/SPECT.txt";
+    	Scanner scan = new Scanner(System.in);
+    	System.out.println("Enter the number of reduced dimentions: ");
+    	int numReducedDimentions = scan.nextInt();
         DataSet set = new DataSet(new CreateDataSet(numInstances, numAttributes, fileLocation).getIntanceArray());
         System.out.println("Before PCA");
         System.out.println(set);

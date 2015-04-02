@@ -1,5 +1,7 @@
 package homework3;
 
+import java.util.Scanner;
+
 import shared.DataSet;
 import shared.Instance;
 import shared.filt.IndependentComponentAnalysis;
@@ -12,7 +14,7 @@ import util.linalg.RectangularMatrix;
  * @author Pujun Bhatnagar
  * @version 1.0
  */
-public class SPECTICA {
+public class SpectICA {
     
     /**
      * The test main
@@ -22,18 +24,14 @@ public class SPECTICA {
     public static void main(String[] args) {
     	int numInstances = 267;
     	int numAttributes = 23;
+    	Scanner scan = new Scanner(System.in);
+    	System.out.println("Enter the number of reduced dimentions: ");
+    	int numReducedDimentions = scan.nextInt();
     	String fileLocation = "src/Homework3/SPECT.txt";
         DataSet set = new DataSet(new CreateDataSet(numInstances, numAttributes, fileLocation).getIntanceArray());
-        System.out.println("Before randomizing");
-        System.out.println(set);
-        Matrix projection = new RectangularMatrix(new double[][]{ {.6, .6}, {.4, .6}});
-        for (int i = 0; i < set.size(); i++) {
-            Instance instance = set.get(i);
-            instance.setData(projection.times(instance.getData()));
-        }
         System.out.println("Before ICA");
         System.out.println(set);
-        IndependentComponentAnalysis filter = new IndependentComponentAnalysis(set, 1);
+        IndependentComponentAnalysis filter = new IndependentComponentAnalysis(set, numReducedDimentions);
         filter.filter(set);
         System.out.println("After ICA");
         System.out.println(set);
