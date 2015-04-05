@@ -36,7 +36,7 @@ public class IonosphereRP {
 		DataSet dataSet = new DataSet((new CreateDataSet(numInstances, numAttributes, fileLocation).getIntanceArray()));
 		DataSet backupDataSet = new DataSet((new CreateDataSet(numInstances, numAttributes, fileLocation).getIntanceArray()));
 		System.out.println("Before Randomized projections\n");
-		System.out.println(dataSet);
+//		System.out.println(dataSet);
 		RandomizedProjectionFilter filter = new RandomizedProjectionFilter(numReducedDimentions, numAttributes);
 		System.out.println("Randomized vectors to which data will be projected");
 		System.out.println(filter.getProjection().transpose());
@@ -46,7 +46,7 @@ public class IonosphereRP {
 		System.out.println("Projected Data");
 		System.out.println(dataSet);
 		System.out.println("\n**********\n");
-		filter.reverse(dataSet);
-		System.out.println(dataSet);
+//		filter.reverse(dataSet);
+//		System.out.println(dataSet);
 	}
 }
