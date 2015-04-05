@@ -1,5 +1,6 @@
 package homework3;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import shared.DataSet;
@@ -23,14 +24,13 @@ public class IonospherePCA {
     	int numInstances = 351;
     	int numAttributes = 34;
     	String fileLocation = "src/Homework3/ionosphere.txt";
-    	Scanner scan = new Scanner(System.in);
-    	System.out.println("Enter the number of reduced dimentions: ");
-    	int numReducedDimentions = scan.nextInt();
         DataSet set = new DataSet(new CreateDataSet(numInstances, numAttributes, fileLocation).getIntanceArray());
         System.out.println("Before PCA");
-        System.out.println(set);
+//        System.out.println(set);
         PrincipalComponentAnalysis filter = new PrincipalComponentAnalysis(set);
         System.out.println(filter.getEigenValues());
+        ArrayList<Double> mainDiagonalValues = MainDiagonalValues.getMainDiagonal(filter.getEigenValues());
+        System.out.println(mainDiagonalValues);
         System.out.println(filter.getProjection().transpose());
         filter.filter(set);
         System.out.println("After PCA");
@@ -41,7 +41,7 @@ public class IonospherePCA {
             instance.setData(reverse.times(instance.getData()).plus(filter.getMean()));
         }
         System.out.println("After reconstructing");
-        System.out.println(set);
+//        System.out.println(set);
         
     }
 
