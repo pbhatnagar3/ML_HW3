@@ -35,7 +35,6 @@ public class IonosphereICA {
         filter.filter(set);
         System.out.println("After ICA");
         System.out.println(set);
-          
     }
 
 }
