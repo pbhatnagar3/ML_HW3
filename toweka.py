@@ -22,8 +22,9 @@ if __name__ == "__main__":
 
 	f.write('@attribute ' + 'RESULT {g, b} \n' )
 	f.write('\n' * 3)
+	f.write('@data\n')
 	for i in xrange(len(lines)):
-		f.write(lines[i].rstrip() + label_list[i])   
+		f.write(lines[i].rstrip() + ', ' + label_list[i])   
 
 	f.close()
 
