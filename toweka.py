@@ -2,7 +2,11 @@ import sys
 if __name__ == "__main__":
 	filename = sys.argv[1]
 	print filename
-	
+	if sys.argv[2] == 'real':
+		attribute_type = 'real'
+	else:
+		attribute_type = '{0, 1}'
+
 	f = open(filename, 'r')
 	lines = f.readlines()
 	f.close()
@@ -18,7 +22,7 @@ if __name__ == "__main__":
 	f.write('@relation ' + filename.replace('.txt', '') + '\n')
 	f.write('\n' * 3)
 	for i in xrange(num_attributes):
-		f.write('@attribute ' + 'attr' + str(i) + ' real\n')
+		f.write('@attribute ' + 'attr' + str(i) + ' ' + attribute_type +' \n')
 
 	f.write('@attribute ' + 'RESULT {g, b} \n' )
 	f.write('\n' * 3)
