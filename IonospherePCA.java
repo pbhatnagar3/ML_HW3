@@ -43,9 +43,12 @@ public class IonospherePCA {
 //        System.out.println(set);
         Scanner scan = new Scanner(System.in);
         PrincipalComponentAnalysis filter = new PrincipalComponentAnalysis(set);
+        System.out.println("EIGENVALUE MATRIX: ");
         System.out.println(filter.getEigenValues());
+        System.out.println("LIST OF EIGENVALUES: ");
         ArrayList<Double> mainDiagonalValues = MainDiagonalValues.getMainDiagonal(filter.getEigenValues());
         System.out.println(mainDiagonalValues);
+        System.out.println("EIGENVECTORS: ");
         System.out.println(filter.getProjection().transpose());
         System.out.println("projection matrix dimensions are " + filter.getProjection().m() + " and " + filter.getProjection().n());
         System.out.println("enter the proposed number of eigenvectors to use: ");
@@ -54,6 +57,7 @@ public class IonospherePCA {
         System.out.println("projection matrix dimensions are " + filter.getProjection().m() + " and " + filter.getProjection().n());
         System.out.println("does the updated eigenvector matrix look okay. Hit Y to continue: ");
         scan.next();
+        System.out.println("TRANSFORMED DATA: ");
         filter.filter(set);
         System.out.println("After PCA");
         System.out.println(set);
@@ -62,7 +66,7 @@ public class IonospherePCA {
             Instance instance = set.get(i);
             instance.setData(reverse.times(instance.getData()).plus(filter.getMean()));
         }
-        System.out.println("After reconstructing");
+//        System.out.println("After reconstructing");
 //        System.out.println(set);
         
     }
